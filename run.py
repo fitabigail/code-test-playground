@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import datetime
+from datetime import datetime
 import re
 import pyfiglet
 import colorama
@@ -18,8 +20,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("event_booking")
 
 
-
-
 MSG = 'Welcome To RoseSaloon'
 FRONT = 'standard'
 
@@ -28,7 +28,11 @@ def print_welcome_msg():
     f = pyfiglet.Figlet(font=FRONT)    
     print(Fore.YELLOW + Style.BRIGHT + f.renderText(MSG))
     print(rose_display)
-  
+
+
+"""
+    prints the image of the rose from https://text-symbols.com/ascii-art/#all_cats
+"""
 
 
 rose_display = \
@@ -71,7 +75,12 @@ rose_display = \
 
 print_welcome_msg()
 
+my_string = str(input('Enter date(mm/dd/yyyy):'))
+my_date = datetime.strptime(my_string, "%m/%d/%Y") 
+print(my_date)
 
+
+    
 """
 * The mobile number must be '9' digits long.
 * The mobile can have '10' if including '0' at the starting.
